@@ -1,0 +1,12 @@
+<app-remember-add  (add)="addNewCard($event)"
+></app-remember-add>
+<div class="card-items">
+    <app-remember-item
+    *ngFor="let c of cards" 
+    [card]="c"
+    (remove)="removeCard($event)"
+
+    [isFrontside] = "c.isFrontside"
+    (changeSides)="changeCardsSides($event)"
+    ></app-remember-item>
+</div>

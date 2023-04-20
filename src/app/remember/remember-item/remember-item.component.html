@@ -1,0 +1,14 @@
+<div class="item" (click)="onClickSideChanged()">
+    <div class="item-content" id={{card?.title}}>
+        <div class="frontside">
+            <div class="close" (click)="onRemoveCard()"></div>
+            <div class="name name-frontside">{{card?.title}}</div> 
+        </div>
+        <div class="backside">
+            <div class="close" (click)="onRemoveCard()"></div>
+            <div class="name">{{card?.title}}</div>
+            <div class="description">{{card?.description}}</div>
+        </div>
+        
+    </div>
+</div>
