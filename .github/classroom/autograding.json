@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Lint",
+      "setup": "npm install; npm install -g @angular/cli@latest",
+      "run": "ng lint",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": null
+    }
+  ]
+}
