@@ -12,12 +12,12 @@ export class RememberItemComponent implements OnChanges{
   public card: Card | null = null;
   
   @Input()
-  isFrontside: boolean | null = true; 
+  public isFrontside: boolean | null = true; 
   
   @Output() 
-  changeSides = new EventEmitter<Card>();
+  public changeSides = new EventEmitter<Card>();
   
-  ngOnChanges(changes: SimpleChanges) {
+  public ngOnChanges(changes: SimpleChanges) {
     const itemContent = document.getElementById(this.card?.title || '');
     if (changes['isFrontside'].currentValue) {
       itemContent?.classList.remove("item-content__clicked");
@@ -25,9 +25,9 @@ export class RememberItemComponent implements OnChanges{
       itemContent?.classList.add("item-content__clicked");
     }
   }
-  isClicked = false;
+  private isClicked = false;
 
-  onClickSideChanged(): void { 
+  public onClickSideChanged(): void { 
     if (this.isClicked) return;  
     this.isClicked = true;
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
@@ -40,12 +40,11 @@ export class RememberItemComponent implements OnChanges{
     }
   }
   @Output() 
-  remove = new EventEmitter<Card>();
+  public remove = new EventEmitter<Card>();
 
-  onRemoveCard(): void{
+  public onRemoveCard(): void{
     if (this.card){
       this.remove.emit(this.card);
     }
-      
   }
 }

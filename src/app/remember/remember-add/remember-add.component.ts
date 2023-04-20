@@ -1,6 +1,6 @@
 import { LowerCasePipe } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Card } from 'src/shared/models/Card';
 
 @Component({
@@ -10,14 +10,14 @@ import { Card } from 'src/shared/models/Card';
 })
 export class RememberAddComponent {
   @Output()
-  add = new EventEmitter<Card>();
+  public add = new EventEmitter<Card>();
 
-  form = new FormGroup({
-    cardTitle: new FormControl<string | null>(null),
-    cardDescription: new FormControl<string | null>(null),
+  public form = new FormGroup({
+    cardTitle: new FormControl<string | null>(null, [Validators.required]),
+    cardDescription: new FormControl<string | null>(null, [Validators.required]),
   });
 
-  submit(): void {
+  public submit(): void {
     const formData = this.form.value;
     const newCard: Card = {
       title: new LowerCasePipe().transform(formData.cardTitle) || '',
@@ -26,7 +26,8 @@ export class RememberAddComponent {
     };
     this.add.emit(newCard);
     this.form.reset();
-  } 
-  // get title() { return this.formData.cardTitle; }
-  // get description() { return this.formData.cardDescription; }
+  }
+  public get cardTitle() { return this.form.get('cardTitle'); }
+  public get cardDescription() { return this.form.get('cardDescription'); }
+ 
 }

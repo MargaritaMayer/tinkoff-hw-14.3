@@ -3,12 +3,28 @@
     <div class="form-content">
         <div class="row">
             <input type="text" placeholder="Название" aria-label="Название" formControlName="cardTitle">
+            
+            <div *ngIf="cardTitle?.invalid && (cardTitle?.dirty || cardTitle?.touched)"
+            class="alert">
+                <div *ngIf="cardTitle!.errors?.['required']">
+                    поле обязательно для заполнения
+                </div>
+            </div>
+
         </div>
         <div class="row">
+            
             <textarea placeholder="Описание" aria-label="Описание" formControlName="cardDescription"></textarea>
+           
+            <div *ngIf="cardDescription?.invalid && (cardDescription?.dirty || cardDescription?.touched)"
+            class="alert">
+                <div *ngIf="cardDescription!.errors?.['required']">
+                    поле обязательно для заполнения
+                </div>
+            </div>
         </div>
         <div class="row row_submit">
-            <button type="submit" class="button">Добавить</button>
+            <button type="submit" [disabled]="form.invalid" class="button">Добавить</button>
         </div>
     </div>
 </form>

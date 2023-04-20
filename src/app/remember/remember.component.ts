@@ -29,24 +29,23 @@ const data: Card[] = [
   }
 ];
 
-
 @Component({
   selector: 'app-remember',
   templateUrl: './remember.component.html',
   styleUrls: ['./remember.component.less']
 })
 export class RememberComponent implements OnInit {
-  cards: Card[] = [];
-  ngOnInit(): void {
+  public cards: Card[] = [];
+  public ngOnInit(): void {
     this.cards = data;
   }
-  removeCard(removedCard: Card | null) {
+  public removeCard(removedCard: Card | null) {
     this.cards = this.cards.filter(card => card!=removedCard)
   }
-  addNewCard(card: Card): void {
+  public addNewCard(card: Card): void {
     this.cards.push(card);
   }
-  changeCardsSides(flippedCard: Card){
+  public changeCardsSides(flippedCard: Card){
     data.forEach(card => 
       card.isFrontside = (card !== flippedCard)? true: flippedCard.isFrontside)
   }
